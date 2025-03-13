@@ -89,9 +89,6 @@ export function Sidebar({
                   {note.title || "Untitled"}
                 </p>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                {new Date(note.updatedAt).toLocaleDateString()}
-              </p>
             </div>
             <button
               onClick={(e) => {
