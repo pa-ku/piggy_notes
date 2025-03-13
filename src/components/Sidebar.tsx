@@ -51,9 +51,9 @@ export function Sidebar({
 
 
   return (
-    <div className="w-64 rounded-3xl m-3 bg-gray-50  dark:bg-background-light p-4 flex flex-col">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-xl font-bold text-gray-800 dark:text-primary">
+    <div className="w-64 rounded-3xl m-3 bg-gray-50  dark:bg-background-light  flex flex-col">
+      <div className="flex px-4 pt-2 items-center justify-between mb-6">
+        <h1 className="text-xl font-bold text-slate-900 dark:text-primary">
           PiggyNote
         </h1>
         <div className="flex gap-2">
@@ -66,7 +66,7 @@ export function Sidebar({
           </Button>
         </div>
       </div>
-      <div className="flex-1  overflow-y-auto">
+      <div className="flex-1 px-2  overflow-y-auto">
         {notes.map((note) => (
           <div
             key={note.id}
@@ -77,15 +77,15 @@ export function Sidebar({
             onDragLeave={handleDragLeave}
             onDrop={(e) => handleDrop(e, note.id)}
             onClick={() => onNoteSelect(note.id)}
-            className={`flex items-center p-3 mb-2 rounded-lg cursor-pointer group transition-colors ${
+            className={`flex items-center px-3 py-1 mb-1 rounded-lg cursor-pointer group transition-colors ${
               activeNoteId === note.id
                 ? "bg-blue-100 dark:bg-background-dark dark:text-primary"
-                : "hover:bg-gray-100 dark:hover:bg-background-light "
+                : "hover:bg-gray-200 dark:hover:bg-background-dark/50 "
             }`}
           >
             <div className="flex-1" >
               <div className="flex items-center">
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">
+                <p className="font-medium text-gray-800 dark:text-gray-200 overflow-x-clip">
                   {note.title || "Untitled"}
                 </p>
               </div>
@@ -95,9 +95,9 @@ export function Sidebar({
                 e.stopPropagation();
                 onDeleteNote(note.id);
               }}
-              className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="p-1 rounded   opacity-0 group-hover:opacity-100 transition-opacity"
             >
-              <Trash2 className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+              <Trash2 className="w-4 h-4 text-gray-500 dark:text-gray-400 hover:stroke-primary" />
             </button>
           </div>
         ))}
