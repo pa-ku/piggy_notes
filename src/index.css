@@ -19,7 +19,7 @@
 }
 
 .prose h1 {
-  @apply text-3xl m-0;
+  @apply text-2xl m-0;
 }
 
 .prose h2 {
