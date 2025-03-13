@@ -4,6 +4,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Editor } from "./components/Editor";
 import { Note } from "./types";
 import ConfirmModal from "./components/ConfirmModal";
+import useLocalStorage from "use-local-storage";
 
 export default function App() {
   const [notes, setNotes] = useState<Note[]>(() => {
@@ -18,7 +19,7 @@ export default function App() {
     }
     return [];
   });
-  const [activeNoteId, setActiveNoteId] = useState<string | null>(null);
+  const [activeNoteId, setActiveNoteId] = useLocalStorage<string | null>('activeNoteId', null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [noteToDelete, setNoteToDelete] = useState<string | null>(null);
 

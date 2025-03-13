@@ -5,6 +5,7 @@ import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Note } from '../types';
 
 import EditorTopBar from './EditorTopBar';
+import useLocalStorage from 'use-local-storage';
 
 interface EditorProps {
   note: Note | null;
@@ -12,7 +13,7 @@ interface EditorProps {
 }
 
 export function Editor({ note, onUpdate }: EditorProps) {
-  const [isPreview, setIsPreview] = useState(false);
+  const [isPreview, setIsPreview] = useLocalStorage('isPreview', false);
   const [localContent, setLocalContent] = useState(note?.content || '');
   const [localTitle, setLocalTitle] = useState(note?.title || '');
 
@@ -45,8 +46,8 @@ export function Editor({ note, onUpdate }: EditorProps) {
 
   if (!note) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-gray-50 bg-gradient-to-tl dark:to-background-light dark:from-background-dark">
-        <p className="text-gray-500 dark:text-gray-400">Select a note or create a new one</p>
+      <div className="flex-1 flex items-center justify-center bg-gray-50 dark:bg-background-dark  ">
+        <p className="text-gray-500 dark:text-primary">Select a note or create a new one</p>
       </div>
     );
   }
